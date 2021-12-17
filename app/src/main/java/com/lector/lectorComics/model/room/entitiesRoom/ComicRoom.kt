@@ -1,7 +1,11 @@
 package com.lector.lectorComics.model.room.entitiesRoom
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
 data class ComicRoom(
-    val id: Int,
+    @PrimaryKey val id: Int,
     val name: String,
     val author: AuthorRoom,
     val imageUrl: String,
