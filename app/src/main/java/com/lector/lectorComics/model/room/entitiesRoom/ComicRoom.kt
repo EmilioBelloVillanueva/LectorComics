@@ -1,12 +1,12 @@
-package com.lector.lectorComics.model.room.entitiesDAO
+package com.lector.lectorComics.model.room.entitiesRoom
 
-data class ComicDAO(
+data class ComicRoom(
     val id: Int,
     val name: String,
-    val author: AuthorDAO,
+    val author: AuthorRoom,
     val imageUrl: String,
     val description: String,
-    val listChapter: List<ChapterDAO>,
+    val listChapter: List<ChapterRoom>,
     var favourite: Boolean,
     var seen: Boolean
 )
