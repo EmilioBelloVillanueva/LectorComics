@@ -7,7 +7,6 @@ import androidx.room.Query
 import com.lector.lectorComics.model.room.entitiesRoom.AuthorRoom
 
 @Dao
-
 interface AuthorDAO {
     @Query("SELECT * FROM author")
     fun getAll(): List<AuthorRoom>

@@ -3,7 +3,7 @@ package com.lector.lectorComics.model.room.entitiesRoom
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "comic")
 data class ComicRoom(
     @PrimaryKey val id: Int,
     val name: String,
