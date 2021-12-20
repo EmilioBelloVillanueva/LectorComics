@@ -5,12 +5,12 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "comic")
 data class ComicRoom(
-    @PrimaryKey val id: Int,
+    @PrimaryKey val id: Long,
     val name: String,
-    val author: AuthorRoom,
+    val authorId: Long,
     val imageUrl: String,
     val description: String,
-    val listChapter: List<ChapterRoom>,
+    val listChapterId: List<Long>,
     var favourite: Boolean,
     var seen: Boolean
 )
