@@ -1,24 +1,31 @@
 package com.lector.lectorComics.model.room.DAOs
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.lector.lectorComics.model.room.entitiesRoom.ChapterRoom
+import com.lector.lectorComics.model.room.entitiesRoom.onetoone.ChapterWithComic
 
 @Dao
 interface ChapterDAO {
     @Query("SELECT * FROM chapter")
     fun getAll(): List<ChapterRoom>
 
-    @Query("SELECT * FROM chapter WHERE chapterId IN (:ids)")
-    fun loadAllByIds(ids: IntArray): List<ChapterRoom>
+    @Transaction
+    @Query("SELECT * FROM chapter")
+    fun getAllWithComic(): List<ChapterWithComic>
 
-    @Query("SELECT * FROM chapter WHERE chapterId IN (:id) LIMIT 1")
-    fun loadById(id: Int): ChapterRoom
+    @Query("SELECT * FROM chapter WHERE comicId = (:comicId)")
+    fun getAllByComicId(comicId: Int): List<ChapterRoom>
 
-    @Query("SELECT * FROM chapter WHERE comicId IN (:comicId) AND numberChapter IN (:number) LIMIT 1")
-    fun loadByNumberChapterAndComicId(comicId: Int, number: Int): ChapterRoom
+    @Transaction
+    @Query("SELECT * FROM chapter WHERE comicId = (:comicId)")
+    fun getAllByComicIdWithComic(comicId: Int): ChapterRoom
+
+    @Query("SELECT * FROM chapter WHERE chapterId = (:chapterId)")
+    fun loadAllById(chapterId: Int): ChapterRoom
+
+    @Transaction
+    @Query("SELECT * FROM chapter WHERE chapterId = (:chapterId)")
+    fun loadAllByIdWithComic(chapterId: Int): ChapterWithComic
 
     @Insert
     fun insertAll(vararg chapters: ChapterRoom)

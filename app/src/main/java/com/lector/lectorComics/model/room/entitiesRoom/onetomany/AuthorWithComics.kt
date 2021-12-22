@@ -5,14 +5,12 @@ import androidx.room.Junction
 import androidx.room.Relation
 import com.lector.lectorComics.model.room.entitiesRoom.AuthorRoom
 import com.lector.lectorComics.model.room.entitiesRoom.ComicRoom
-import com.lector.lectorComics.model.room.entitiesRoom.maytomany.AuthorWithComicRef
 
 data class AuthorWithComics(
     @Embedded val author: AuthorRoom,
     @Relation(
         parentColumn = "authorId",
-        entityColumn = "comicId",
-        associateBy = Junction(AuthorWithComicRef::class)
+        entityColumn = "comicId"
     )
     val comics: List<ComicRoom>
 )
